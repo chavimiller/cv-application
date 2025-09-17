@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function Experience() {
+function Experience({ id, onRemove }) {
   const [mode, setMode] = useState("edit");
 
   const [companyName, setCompanyName] = useState("");
@@ -17,54 +17,71 @@ function Experience() {
   if (mode === "edit") {
     return (
       <>
-        <h1>Experience</h1>
         <form className="form-box">
-          <label>
-            Company Name:{" "}
+          <div className="input-group">
+            <label htmlFor="companyName">Company Name:</label>
             <input
+              id="companyName"
               name="companyName"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
             />
-          </label>
-          <label>
-            Title:{" "}
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="title">Title:</label>
             <input
+              id="title"
               name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
-          <label>
-            Dates of Employment:{" "}
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="employmentDates">Dates of Employment:</label>
             <input
+              id="employmentDates"
               name="employmentDates"
               value={dates}
               onChange={(e) => setDates(e.target.value)}
             />
-          </label>
-          <label>
-            Responsibilities:
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="responsibilities">Responsibilities:</label>
             <textarea
+              id="responsibilities"
               name="responsibilities"
               value={detail}
               onChange={(e) => setDetail(e.target.value)}
             />
-          </label>
-          <Button text="Submit" onClick={handleSubmit} />
-          <Button text="Remove Experience" />
+          </div>
+          <div className="btn-group">
+            <Button
+              className={"btn-main"}
+              text="Submit"
+              onClick={handleSubmit}
+            />
+            <Button
+              className={"btn-remove"}
+              text="Remove Experience"
+              onClick={() => onRemove(id)}
+            />
+          </div>
         </form>
       </>
     );
   } else {
     return (
       <>
-        <h1>Experience</h1>
-        <div>{companyName}</div>
-        <div>{title}</div>
-        <div>{dates}</div>
-        <div>{detail}</div>
-        <Button text="Edit" onClick={handleSubmit} />
+        <div className="submit-info">
+          <div>{companyName}</div>
+          <div>{title}</div>
+          <div>{dates}</div>
+          <div>{detail}</div>
+          <Button className={"btn-edit"} text="Edit" onClick={handleSubmit} />
+        </div>
       </>
     );
   }

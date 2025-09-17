@@ -11,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 a {
@@ -23,9 +24,8 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 10px;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -35,10 +35,16 @@ h1 {
   line-height: 1.1;
 }
 
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.4em 1em;
+  width: fit-content;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -47,8 +53,8 @@ button {
   transition: border-color 0.25s;
 }
 button:hover, input:focus {
-  border-color: rgb(218, 92, 136);
-  outline-color: rgb(218, 92, 136);
+  border-color: #fa4c4c;
+  outline-color: #fa4c4c;
 }
 button:focus,
 button:focus-visible {
@@ -71,17 +77,73 @@ button:focus-visible {
 .form-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 800px;
-  gap: 18px;
-}
-
-label {
-  display: flex;
   gap: 12px;
-  align-items: center;
-  justify-content: space-between;
-  width: 600px;
+  width: fit-content;
 }
 
+.input-group {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label, .input-group textarea {
+  width: 130px;
+}
+
+textarea, input {
+  width: 400px;
+  height: 25px;
+}
+
+textarea {
+  min-width: 400px;
+  height: 200px;
+  resize: vertical;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 8px 0 18px 0;
+}
+
+.btn-main {
+  background-color: rgb(249, 74, 168);
+  color: white;
+}
+
+.btn-remove {
+  background-color: transparent;
+  color: #fa4c4c;
+}
+
+.btn-add {
+  background-color: rgb(49, 152, 153);
+  color: white;
+}
+
+.btn-edit {
+  background-color: rgb(249, 74, 168);
+  color: white;
+  margin: 10px 0;
+}
+
+.submit-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.main-container {
+  display: flex;
+}
+
+.right-side {
+  display: flex;
+  max-width: 800px;
+  height: 100%;
+  background-color: #915555;
+}

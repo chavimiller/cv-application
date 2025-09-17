@@ -16,43 +16,47 @@ function General() {
   if (mode === "edit") {
     return (
       <>
-        <h1>General</h1>
         <form className="form-box">
-          <label>
-            Full Name:
+          <div className="input-group">
+            <label htmlFor="fullName">Full Name:</label>
             <input
+              id="fullName"
               name="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
-          </label>
-          <label>
-            Email:
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email:</label>
             <input
+              id="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </label>
-          <label>
-            Phone Number:
+          </div>
+          <div className="input-group">
+            <label htmlFor="phoneNumber">Phone Number:</label>
             <input
+              id="phoneNumber"
               name="phoneNumber"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
-          </label>
-          <Button text="Submit" onClick={handleSubmit} />
+          </div>
+          <Button className={"btn-main"} text="Submit" onClick={handleSubmit} />
         </form>
       </>
     );
   } else {
     return (
       <>
-        <h1>{fullName}</h1>
-        <div>{email}</div>
-        <div>{phone}</div>
-        <Button text="Edit" onClick={handleSubmit} />
+        <div className="submit-info">
+          <div>Full name: {fullName}</div>
+          <div>Email: {email}</div>
+          <div>Phone number: {phone}</div>
+          <Button className={"btn-edit"} text="Edit" onClick={handleSubmit} />
+        </div>
       </>
     );
   }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function Education() {
+function Education({ id, onRemove }) {
   const [mode, setMode] = useState("edit");
 
   const [schoolName, setSchoolName] = useState("");
@@ -17,55 +17,67 @@ function Education() {
   if (mode === "edit") {
     return (
       <>
-        <h1>Education</h1>
         <form className="form-box">
-          <label>
-            Name of School:
+          <div className="input-group">
+            <label htmlFor="schoolName">Name of School:</label>
             <input
+              id="schoolName"
               name="schoolName"
               value={schoolName}
               onChange={(e) => setSchoolName(e.target.value)}
             />
-          </label>
-          <label>
-            Area of Study:
+          </div>
+          <div className="input-group">
+            <label htmlFor="studyArea">Area of Study:</label>
             <input
+              id="studyArea"
               name="studyArea"
               value={studyArea}
               onChange={(e) => setStudyArea(e.target.value)}
             />
-          </label>
-          <label>
-            Degree:
+          </div>
+          <div className="input-group">
+            <label htmlFor="degreeType">Degree:</label>
             <input
+              id="degreeType"
               name="degreeType"
               value={degree}
               onChange={(e) => setDegree(e.target.value)}
             />
-          </label>
-          <label>
-            Dates:
+          </div>
+          <div className="input-group">
+            <label htmlFor="dates">Dates:</label>
             <input
+              id="dates"
               name="dates"
               value={dates}
               onChange={(e) => setDates(e.target.value)}
             />
-          </label>
-          <Button text="Submit" onClick={handleSubmit} />
-          <Button text="Remove Education" />
+          </div>
+          <div className="btn-group">
+            <Button
+              className={"btn-main"}
+              text="Submit"
+              onClick={handleSubmit}
+            />
+            <Button
+              className={"btn-remove"}
+              text="Remove Education"
+              onClick={() => onRemove(id)}
+            />
+          </div>
         </form>
       </>
     );
   } else {
     return (
       <>
-        <div>
-          <h1>Education</h1>
-          <div>{schoolName}</div>
-          <div>{studyArea}</div>
-          <div>{degree}</div>
-          <div>{dates}</div>
-          <Button text="Edit" onClick={handleSubmit} />
+        <div className="submit-info">
+          <div>Name of school: {schoolName}</div>
+          <div>Area of study: {studyArea}</div>
+          <div>Degree type: {degree}</div>
+          <div>Dates of attendance: {dates}</div>
+          <Button className={"btn-edit"} text="Edit" onClick={handleSubmit} />
         </div>
       </>
     );

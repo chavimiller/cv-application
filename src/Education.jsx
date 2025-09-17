@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function Education({ id, onRemove }) {
+function Education({ educationData, onUpdate, onRemove }) {
   const [mode, setMode] = useState("edit");
 
-  const [schoolName, setSchoolName] = useState("");
-  const [studyArea, setStudyArea] = useState("");
-  const [degree, setDegree] = useState("");
-  const [dates, setDates] = useState("");
+  function handleInputChange(field, value) {
+    onUpdate({
+      ...educationData,
+      [field]: value,
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,8 +25,8 @@ function Education({ id, onRemove }) {
             <input
               id="schoolName"
               name="schoolName"
-              value={schoolName}
-              onChange={(e) => setSchoolName(e.target.value)}
+              value={educationData.schoolName || ""}
+              onChange={(e) => handleInputChange("schoolName", e.target.value)}
             />
           </div>
           <div className="input-group">
@@ -32,8 +34,8 @@ function Education({ id, onRemove }) {
             <input
               id="studyArea"
               name="studyArea"
-              value={studyArea}
-              onChange={(e) => setStudyArea(e.target.value)}
+              value={educationData.studyArea || ""}
+              onChange={(e) => handleInputChange("studyArea", e.target.value)}
             />
           </div>
           <div className="input-group">
@@ -41,8 +43,8 @@ function Education({ id, onRemove }) {
             <input
               id="degreeType"
               name="degreeType"
-              value={degree}
-              onChange={(e) => setDegree(e.target.value)}
+              value={educationData.degree || ""}
+              onChange={(e) => handleInputChange("degree", e.target.value)}
             />
           </div>
           <div className="input-group">
@@ -50,8 +52,8 @@ function Education({ id, onRemove }) {
             <input
               id="dates"
               name="dates"
-              value={dates}
-              onChange={(e) => setDates(e.target.value)}
+              value={educationData.dates || ""}
+              onChange={(e) => handleInputChange("dates", e.target.value)}
             />
           </div>
           <div className="btn-group">
@@ -63,7 +65,7 @@ function Education({ id, onRemove }) {
             <Button
               className={"btn-remove"}
               text="Remove Education"
-              onClick={() => onRemove(id)}
+              onClick={() => onRemove(educationData.id)}
             />
           </div>
         </form>
@@ -73,10 +75,10 @@ function Education({ id, onRemove }) {
     return (
       <>
         <div className="submit-info">
-          <div>Name of school: {schoolName}</div>
-          <div>Area of study: {studyArea}</div>
-          <div>Degree type: {degree}</div>
-          <div>Dates of attendance: {dates}</div>
+          <div>Name of school: {educationData.schoolName}</div>
+          <div>Area of study: {educationData.studyArea}</div>
+          <div>Degree type: {educationData.degree}</div>
+          <div>Dates of attendance: {educationData.dates}</div>
           <Button className={"btn-edit"} text="Edit" onClick={handleSubmit} />
         </div>
       </>

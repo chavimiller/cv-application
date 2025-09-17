@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgb(255, 255, 255);
   background-color: #242424;
 
   font-synthesis: none;
@@ -62,7 +62,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #ddf0ee92;
   }
   a:hover {
     color: #747bff;
@@ -144,7 +144,10 @@ textarea {
 }
 
 .right-side {
+  margin-top: 30px;
   flex-grow: 1;
-  background-color: #e3e3e3;
-  border-radius: 24px;
+  max-height: 120vh;
+  background-color: white;
+  box-shadow: 2px 8px 15px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }

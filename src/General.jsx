@@ -1,12 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function General() {
+function General({ generalData, onUpdateGeneral }) {
   const [mode, setMode] = useState("edit");
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  function handleInputChange(field, value) {
+    onUpdateGeneral({
+      ...generalData,
+      [field]: value,
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,8 +25,8 @@ function General() {
             <input
               id="fullName"
               name="fullName"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={generalData.fullName || ""}
+              onChange={(e) => handleInputChange("fullName", e.target.value)}
             />
           </div>
           <div className="input-group">
@@ -31,8 +34,8 @@ function General() {
             <input
               id="email"
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={generalData.email || ""}
+              onChange={(e) => handleInputChange("email", e.target.value)}
             />
           </div>
           <div className="input-group">
@@ -40,8 +43,8 @@ function General() {
             <input
               id="phoneNumber"
               name="phoneNumber"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              value={generalData.phoneNumber || ""}
+              onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
             />
           </div>
           <Button className={"btn-main"} text="Submit" onClick={handleSubmit} />
@@ -52,9 +55,9 @@ function General() {
     return (
       <>
         <div className="submit-info">
-          <div>Full name: {fullName}</div>
-          <div>Email: {email}</div>
-          <div>Phone number: {phone}</div>
+          <div>Full name: {generalData.fullName}</div>
+          <div>Email: {generalData.email}</div>
+          <div>Phone number: {generalData.phoneNumber}</div>
           <Button className={"btn-edit"} text="Edit" onClick={handleSubmit} />
         </div>
       </>

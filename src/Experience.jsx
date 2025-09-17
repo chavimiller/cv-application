@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function Experience({ id, onRemove }) {
+function Experience({ experienceData, onUpdate, onRemove }) {
   const [mode, setMode] = useState("edit");
 
-  const [companyName, setCompanyName] = useState("");
-  const [title, setTitle] = useState("");
-  const [dates, setDates] = useState("");
-  const [detail, setDetail] = useState("");
+  function handleInputChange(field, value) {
+    onUpdate({
+      ...experienceData,
+      [field]: value,
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,8 +25,8 @@ function Experience({ id, onRemove }) {
             <input
               id="companyName"
               name="companyName"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
+              value={experienceData.companyName}
+              onChange={(e) => handleInputChange("companyName", e.target.value)}
             />
           </div>
 
@@ -33,8 +35,8 @@ function Experience({ id, onRemove }) {
             <input
               id="title"
               name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={experienceData.title}
+              onChange={(e) => handleInputChange("title", e.target.value)}
             />
           </div>
 
@@ -43,8 +45,8 @@ function Experience({ id, onRemove }) {
             <input
               id="employmentDates"
               name="employmentDates"
-              value={dates}
-              onChange={(e) => setDates(e.target.value)}
+              value={experienceData.dates}
+              onChange={(e) => handleInputChange("dates", e.target.value)}
             />
           </div>
 
@@ -53,8 +55,8 @@ function Experience({ id, onRemove }) {
             <textarea
               id="responsibilities"
               name="responsibilities"
-              value={detail}
-              onChange={(e) => setDetail(e.target.value)}
+              value={experienceData.detail}
+              onChange={(e) => handleInputChange("detail", e.target.value)}
             />
           </div>
           <div className="btn-group">
@@ -66,7 +68,7 @@ function Experience({ id, onRemove }) {
             <Button
               className={"btn-remove"}
               text="Remove Experience"
-              onClick={() => onRemove(id)}
+              onClick={() => onRemove(experienceData.id)}
             />
           </div>
         </form>
@@ -76,10 +78,10 @@ function Experience({ id, onRemove }) {
     return (
       <>
         <div className="submit-info">
-          <div>{companyName}</div>
-          <div>{title}</div>
-          <div>{dates}</div>
-          <div>{detail}</div>
+          <div>{experienceData.companyName}</div>
+          <div>{experienceData.title}</div>
+          <div>{experienceData.dates}</div>
+          <div>{experienceData.detail}</div>
           <Button className={"btn-edit"} text="Edit" onClick={handleSubmit} />
         </div>
       </>

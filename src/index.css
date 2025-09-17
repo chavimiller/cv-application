@@ -61,8 +61,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ddf0ee92;
+    color: #4d4d4d;
+    background-color: #fafeff66;
   }
   a:hover {
     color: #747bff;
@@ -99,6 +99,7 @@ textarea {
   min-width: 400px;
   height: 200px;
   resize: vertical;
+  
 }
 
 .btn-group {
@@ -133,6 +134,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: start;
+  text-align: left;
 }
 
 .main-container {
@@ -150,4 +152,47 @@ textarea {
   background-color: white;
   box-shadow: 2px 8px 15px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+.general-info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 50px 50px 0 50px;
+}
+
+.general-info > div {
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+.general-info > h1 {
+  padding: 8px 0;
+  margin: 0;
+}
+
+.line {
+  border-bottom: 1px solid #4d4d4d;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.education {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 10px 50px 0 50px;
+}
+
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
+.experience {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 10px 50px 20px 50px;
+  text-align: left;
 }

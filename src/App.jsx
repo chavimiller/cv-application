@@ -121,29 +121,40 @@ function App() {
         </div>
         <div className="right-side">
           <div className="general-info">
-            <div>{generalData.fullName}</div>
+            <h1>{generalData.fullName}</h1>
             <div>{generalData.email}</div>
             <div>{generalData.phoneNumber}</div>
+            {(generalData.fullName ||
+              generalData.email ||
+              generalData.phoneNumber) && <div className="line"></div>}
           </div>
-          <div className="Education">
+          <div className="education">
+            <h2>Education</h2>
             {educations.map((copy) => (
               <>
-                <div key={copy.id}>{copy.schoolName}</div>
+                <h4 key={copy.id}>{copy.schoolName}</h4>
                 <div key={copy.id}>{copy.studyArea}</div>
                 <div key={copy.id}>{copy.degree}</div>
                 <div key={copy.id}>{copy.dates}</div>
               </>
             ))}
+            {educations.some(
+              (x) => x.schoolName || x.studyArea || x.degree || x.dates
+            ) && <div className="line"></div>}
           </div>
-          <div className="Experience">
+          <div className="experience">
+            <h2>Experience</h2>
             {experiences.map((copy) => (
               <>
-                <div key={copy.id}>{copy.companyName}</div>
+                <h4 key={copy.id}>{copy.companyName}</h4>
                 <div key={copy.id}>{copy.title}</div>
                 <div key={copy.id}>{copy.dates}</div>
                 <div key={copy.id}>{copy.detail}</div>
               </>
             ))}
+            {experiences.some(
+              (x) => x.schoolName || x.studyArea || x.degree || x.dates
+            ) && <div className="line"></div>}
           </div>
         </div>
       </div>
